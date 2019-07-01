@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+
+    <!-- metas -->
+    <title>{{ Main.title }}</title>
+    <meta name="description" content="{{ Main.description }}"/>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+    
+    <!-- styles -->
+    {% if isProd %}<link media="all" rel="stylesheet" href="{{ 'build.css'|ressource }}"/>{% endif %}
+  </head>
+  <body>
+    {% include './layouts/header/header.html' %}
+    
+    <div class="View" data-component="View">
+      {% include 'sections/' + page + '/' + page + '.html' %}
+    </div>
+
+    <script id="main" src="{{ 'build.js'|ressource }}"></script>
+  </body>
+</html>

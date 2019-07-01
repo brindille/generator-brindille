@@ -1,0 +1,4 @@
+- id: 'home'
+  path: 'home'
+- id: 'about'
+  path: 'about'
