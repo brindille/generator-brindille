@@ -63,23 +63,18 @@ module.exports = class extends Generator {
         name: "name",
         message: "Component name"
       }, {
-        type: "confirm",
-        name: "isSection",
-        message: "Is this component a section",
-        default: false
-      }, {
-        type: "confirm",
-        name: "isLayout",
-        message: "Is this component a layout",
-        default: false
+        type: "list",
+        name: "componentType",
+        message: "Which kind of component do you want to create?",
+        choices: ["component", "layout", "section"]
       }
     ]);
   }
 
   writing() {
-    const isSection = this.answers.isSection
-    const isLayout = this.answers.isLayout
-    const type = isSection ? 'section' : (isLayout ? 'layout' : 'component')
+    const type = this.answers.componentType
+    const isLayout = type === 'layout'
+    const isSection = type === 'section'
     const folder = type + 's'
     const name = this.answers.name.trim()
     const className = toComponentClassName(name)
